@@ -1,14 +1,14 @@
 import juego
 
-Juego1 = juego.Juego(str(input("Introduce el nombre del primer jugador: ")),
-                     str(input("Introduce el nombre del segundo jugador: ")),
-                     str(input("Introduce el nombre del tercer jugador: ")),
-                     int(input("Introduce el numero de caras para el primer dado: ")),
-                     int(input("Introduce el numero de caras para el segundo dado: ")),
-                     int(input("Introduce el numero de caras para el tercer dado: ")),
-                     int(input("Introduce el numero de caras para el cuarto dado: ")),
-                     int(input("Introduce el numero de lanzamientos: ")),
-                     input("¿Quieres ver los resultados intermedios por pantalla? (S/N): "))
+Juego1 = juego.Juego(str(input("Introdueix el nom del primer jugador: ")),
+                     str(input("Introdueix el nom del segon jugador: ")),
+                     str(input("Introdueix el nom del tercer jugador: ")),
+                     int(input("Introdueix el numero de cares per al primer dau: ")),
+                     int(input("Introdueix el numero de cares per al segon dau: ")),
+                     int(input("Introdueix el numero de cares per al tercer dau: ")),
+                     int(input("Introdueix el numero de cares per al cuart dau: ")),
+                     int(input("Introdueix el numero de llançaments: ")),
+                     input("Vols veure els resultats intermedis per pantalla? (S/N): "))
 
 Juego1.jugar()
 Juego1.mostrar()

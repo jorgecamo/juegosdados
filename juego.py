@@ -15,13 +15,13 @@ class Juego:
         self.set_lanzamientos(NumLanzamientos)
         self.dado1 = dado.Dado(CarasDado1)
         if CarasDado1 == CarasDado2 or CarasDado1 == CarasDado3 or CarasDado1 == CarasDado4:
-            raise Exception("No pueden haber dos dados con caras iguales.")
+            raise Exception("No poden haver-hi dos daus amb cares iguals.")
         self.dado2 = dado.Dado(CarasDado2)
         if CarasDado2 == CarasDado3 or CarasDado2 == CarasDado4:
-            raise Exception("No pueden haber dos dados con caras iguales.")
+            raise Exception("No poden haver-hi dos daus amb cares iguals.")
         self.dado3 = dado.Dado(CarasDado3)
         if CarasDado3 == CarasDado4:
-            raise Exception("No pueden haber dos dados con caras iguales.")
+            raise Exception("No poden haver-hi dos daus amb cares iguals.")
         self.dado4 = dado.Dado(CarasDado4)
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (VerIntermedios in ("S", "s"))
@@ -31,25 +31,25 @@ class Juego:
 
     def set_jugador1(self, nombreJugador1):
         if len(nombreJugador1) > 20:
-            raise Exception("La longitud del nombre del jugador 1 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 1 no pot ser major de 20")
         else:
             self.__nombreJugador1 = nombreJugador1
 
     def set_jugador2(self, nombreJugador2):
         if len(nombreJugador2) > 20:
-            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 2 no pot ser major de 20")
         else:
             self.__nombreJugador2 = nombreJugador2
 
     def set_jugador3(self, nombreJugador3):
         if len(nombreJugador3) > 20:
-            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 3 no pot ser major de 20")
         else:
             self.__nombreJugador3 = nombreJugador3
 
     def set_lanzamientos(self, numLanzamientos):
         if not 2 < numLanzamientos <= 1000:
-            raise Exception("El número de lanzamientos debe de estar entre 2 y 1000")
+            raise Exception("El nombre de llançaments ha d'estar entre 2 i 1000")
         else:
             self.__lanzamientos = numLanzamientos
 
@@ -66,7 +66,7 @@ class Juego:
             self.totalResultadosJugador1 += (resultadoDado1 + resultadoDado2 + resultadoDado3 + resultadoDado4)
 
             if self.__intermedios:
-                print(f"Lanzamiento {lanzamientoActual + 1}:")
+                print(f"Llançament {lanzamientoActual + 1}:")
                 print(
                     f"{self.__nombreJugador1}: {resultadoDado1} {resultadoDado2} "
                     f"{resultadoDado3} {resultadoDado4} ({self.totalResultadosJugador1})")
@@ -96,24 +96,24 @@ class Juego:
                 print("")
 
     def mostrar(self):
-        print("Resultados:")
+        print("Resultats:")
         print(f"Jugador 1: {self.__nombreJugador1}")
         print(f"Jugador 2: {self.__nombreJugador2}")
         print(f"Jugador 3: {self.__nombreJugador3}")
-        print(f"Numero de lanzamientos: {self.__lanzamientos}")
-        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} , {self.dado3.getCaras()} "
+        print(f"Numero de llançaments: {self.__lanzamientos}")
+        print(f"Daus: {self.dado1.getCaras()},{self.dado2.getCaras()} , {self.dado3.getCaras()} "
               f"y {self.dado4.getCaras()} ")
-        print(f"Puntos jugador 1: {self.totalResultadosJugador1}")
-        print(f"Puntos jugador 2: {self.totalResultadosJugador2}")
-        print(f"Puntos jugador 3: {self.totalResultadosJugador3}")
+        print(f"Punts jugador 1: {self.totalResultadosJugador1}")
+        print(f"Punts jugador 2: {self.totalResultadosJugador2}")
+        print(f"Punts jugador 3: {self.totalResultadosJugador3}")
         if self.totalResultadosJugador1 > self.totalResultadosJugador2 and \
                 self.totalResultadosJugador1 > self.totalResultadosJugador3:
-            print(f"El GANADOR es {self.__nombreJugador1} con {self.totalResultadosJugador1} puntos")
+            print(f"El GUANYADOR es {self.__nombreJugador1} amb {self.totalResultadosJugador1} Punts")
         elif self.totalResultadosJugador1 == self.totalResultadosJugador2 and \
                 self.totalResultadosJugador1 == self.totalResultadosJugador3:
-            print("Ha habido un EMPATE")
+            print("Hi ha hagut un EMPAT")
         elif self.totalResultadosJugador2 > self.totalResultadosJugador1 and \
                 self.totalResultadosJugador2 > self.totalResultadosJugador3:
-            print(f"El GANADOR es {self.__nombreJugador2} con {self.totalResultadosJugador2} puntos")
+            print(f"El GUANYADOR es {self.__nombreJugador2} amb {self.totalResultadosJugador2} Punts")
         else:
-            print(f"El GANADOR es {self.__nombreJugador3} con {self.totalResultadosJugador3} puntos")
+            print(f"El GUANYADOR es {self.__nombreJugador3} amb {self.totalResultadosJugador3} Punts")

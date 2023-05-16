@@ -18,4 +18,4 @@ class Dado:
         if numCaras in caras_permitidas:
             self.__caras = numCaras
         else:
-            raise Exception("Numero de caras incorrecto")
+            raise Exception("Nombre de cares incorrectes")

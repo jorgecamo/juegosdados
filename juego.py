@@ -4,12 +4,14 @@ import dado
 class Juego:
     __nombreJugador1 = ""
     __nombreJugador2 = ""
+    __nombreJugador3 = ""
     __lanzamientos = 0
 
-    def __init__(self, NombreJugador1, NombreJugador2, CarasDado1, CarasDado2, CarasDado3,
+    def __init__(self, NombreJugador1, NombreJugador2, NombreJugador3, CarasDado1, CarasDado2, CarasDado3,
                  NumLanzamientos, VerIntermedios):
         self.set_jugador1(NombreJugador1)
         self.set_jugador2(NombreJugador2)
+        self.set_jugador3(NombreJugador3)
         self.set_lanzamientos(NumLanzamientos)
         self.dado1 = dado.Dado(CarasDado1)
         self.dado2 = dado.Dado(CarasDado2)
@@ -18,6 +20,7 @@ class Juego:
         self.__intermedios = (VerIntermedios in ("S", "s"))
         self.totalResultadosJugador1 = 0
         self.totalResultadoJugador2 = 0
+        self.totalResultadoJugador3 = 0
 
     def set_jugador1(self, nombreJugador1):
         if len(nombreJugador1) > 20:
@@ -31,6 +34,12 @@ class Juego:
         else:
             self.__nombreJugador2 = nombreJugador2
 
+    def set_jugador3(self, nombreJugador3):
+        if len(nombreJugador3) > 20:
+            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+        else:
+            self.__nombreJugador3 = nombreJugador3
+
     def set_lanzamientos(self, numLanzamientos):
         if not 2 < numLanzamientos <= 1000:
             raise Exception("El número de lanzamientos debe de estar entre 2 y 1000")
@@ -40,6 +49,7 @@ class Juego:
     def jugar(self):
         self.totalResultadosJugador1 = 0
         self.totalResultadoJugador2 = 0
+        self.totalResultadoJugador3 = 0
         for lanzamientoActual in range(self.__lanzamientos):
             # jugador1
             resultadoDado1 = self.dado1.lanzar()
@@ -63,6 +73,17 @@ class Juego:
                 print(
                     f"{self.__nombreJugador2}: {resultadoDado1} {resultadoDado2} "
                     f"{resultadoDado3} ({self.totalResultadoJugador2})")
+
+            # jugador3
+            resultadoDado1 = self.dado1.lanzar()
+            resultadoDado2 = self.dado2.lanzar()
+            resultadoDado3 = self.dado3.lanzar()
+            self.totalResultadoJugador3 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
+
+            if self.__intermedios:
+                print(
+                    f"{self.__nombreJugador2}: {resultadoDado1} {resultadoDado2} "
+                    f"{resultadoDado3} ({self.totalResultadoJugador3})")
                 print("")
 
     def mostrar(self):

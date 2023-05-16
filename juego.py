@@ -12,8 +12,14 @@ class Juego:
         self.set_jugador2(NombreJugador2)
         self.set_lanzamientos(NumLanzamientos)
         self.dado1 = dado.Dado(CarasDado1)
+        if CarasDado1 == CarasDado2 or CarasDado1 == CarasDado3 or CarasDado1 == CarasDado4:
+            raise Exception("No pueden haber dos dados con caras iguales.")
         self.dado2 = dado.Dado(CarasDado2)
+        if CarasDado2 == CarasDado3 or CarasDado2 == CarasDado4:
+            raise Exception("No pueden haber dos dados con caras iguales.")
         self.dado3 = dado.Dado(CarasDado3)
+        if CarasDado3 == CarasDado4:
+            raise Exception("No pueden haber dos dados con caras iguales.")
         self.dado4 = dado.Dado(CarasDado4)
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (VerIntermedios in ("S", "s"))

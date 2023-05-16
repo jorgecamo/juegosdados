@@ -6,7 +6,7 @@ class Juego:
     __nombreJugador2 = ""
     __lanzamientos = 0
 
-    def __init__(self, NombreJugador1, NombreJugador2, CarasDado1, CarasDado2, CarasDado3,
+    def __init__(self, NombreJugador1, NombreJugador2, CarasDado1, CarasDado2, CarasDado3, CarasDado4,
                  NumLanzamientos, VerIntermedios):
         self.set_jugador1(NombreJugador1)
         self.set_jugador2(NombreJugador2)
@@ -14,6 +14,7 @@ class Juego:
         self.dado1 = dado.Dado(CarasDado1)
         self.dado2 = dado.Dado(CarasDado2)
         self.dado3 = dado.Dado(CarasDado3)
+        self.dado4 = dado.Dado(CarasDado4)
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (VerIntermedios in ("S", "s"))
         self.totalResultadosJugador1 = 0
@@ -45,24 +46,26 @@ class Juego:
             resultadoDado1 = self.dado1.lanzar()
             resultadoDado2 = self.dado2.lanzar()
             resultadoDado3 = self.dado3.lanzar()
-            self.totalResultadosJugador1 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
+            resultadoDado4 = self.dado4.lanzar()
+            self.totalResultadosJugador1 += (resultadoDado1 + resultadoDado2 + resultadoDado3 + resultadoDado4)
 
             if self.__intermedios:
                 print(f"Lanzamiento {lanzamientoActual + 1}:")
                 print(
                     f"{self.__nombreJugador1}: {resultadoDado1} {resultadoDado2} "
-                    f"{resultadoDado3} ({self.totalResultadosJugador1})")
+                    f"{resultadoDado3} {resultadoDado4} ({self.totalResultadosJugador1})")
 
             # jugador2
             resultadoDado1 = self.dado1.lanzar()
             resultadoDado2 = self.dado2.lanzar()
             resultadoDado3 = self.dado3.lanzar()
-            self.totalResultadoJugador2 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
+            resultadoDado4 = self.dado4.lanzar()
+            self.totalResultadoJugador2 += (resultadoDado1 + resultadoDado2 + resultadoDado3 + resultadoDado4)
 
             if self.__intermedios:
                 print(
                     f"{self.__nombreJugador2}: {resultadoDado1} {resultadoDado2} "
-                    f"{resultadoDado3} ({self.totalResultadoJugador2})")
+                    f"{resultadoDado3} {resultadoDado4} ({self.totalResultadoJugador2})")
                 print("")
 
     def mostrar(self):
@@ -70,7 +73,8 @@ class Juego:
         print(f"Jugador 1: {self.__nombreJugador1}")
         print(f"Jugador 2: {self.__nombreJugador2}")
         print(f"Numero de lanzamientos: {self.__lanzamientos}")
-        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} y {self.dado3.getCaras()} ")
+        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} , {self.dado3.getCaras()} "
+              f"y {self.dado4.getCaras()} ")
         print(f"Puntos jugador 1: {self.totalResultadosJugador1}")
         print(f"Puntos jugador 2: {self.totalResultadoJugador2}")
         if self.totalResultadosJugador1 > self.totalResultadoJugador2:

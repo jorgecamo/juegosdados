@@ -19,8 +19,8 @@ class Juego:
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (VerIntermedios in ("S", "s"))
         self.totalResultadosJugador1 = 0
-        self.totalResultadoJugador2 = 0
-        self.totalResultadoJugador3 = 0
+        self.totalResultadosJugador2 = 0
+        self.totalResultadosJugador3 = 0
 
     def set_jugador1(self, nombreJugador1):
         if len(nombreJugador1) > 20:
@@ -48,8 +48,8 @@ class Juego:
 
     def jugar(self):
         self.totalResultadosJugador1 = 0
-        self.totalResultadoJugador2 = 0
-        self.totalResultadoJugador3 = 0
+        self.totalResultadosJugador2 = 0
+        self.totalResultadosJugador3 = 0
         for lanzamientoActual in range(self.__lanzamientos):
             # jugador1
             resultadoDado1 = self.dado1.lanzar()
@@ -67,36 +67,43 @@ class Juego:
             resultadoDado1 = self.dado1.lanzar()
             resultadoDado2 = self.dado2.lanzar()
             resultadoDado3 = self.dado3.lanzar()
-            self.totalResultadoJugador2 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
+            self.totalResultadosJugador2 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
 
             if self.__intermedios:
                 print(
                     f"{self.__nombreJugador2}: {resultadoDado1} {resultadoDado2} "
-                    f"{resultadoDado3} ({self.totalResultadoJugador2})")
+                    f"{resultadoDado3} ({self.totalResultadosJugador2})")
 
             # jugador3
             resultadoDado1 = self.dado1.lanzar()
             resultadoDado2 = self.dado2.lanzar()
             resultadoDado3 = self.dado3.lanzar()
-            self.totalResultadoJugador3 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
+            self.totalResultadosJugador3 += (resultadoDado1 + resultadoDado2 + resultadoDado3)
 
             if self.__intermedios:
                 print(
                     f"{self.__nombreJugador2}: {resultadoDado1} {resultadoDado2} "
-                    f"{resultadoDado3} ({self.totalResultadoJugador3})")
+                    f"{resultadoDado3} ({self.totalResultadosJugador3})")
                 print("")
 
     def mostrar(self):
         print("Resultados:")
         print(f"Jugador 1: {self.__nombreJugador1}")
         print(f"Jugador 2: {self.__nombreJugador2}")
+        print(f"Jugador 3: {self.__nombreJugador3}")
         print(f"Numero de lanzamientos: {self.__lanzamientos}")
         print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} y {self.dado3.getCaras()} ")
         print(f"Puntos jugador 1: {self.totalResultadosJugador1}")
-        print(f"Puntos jugador 2: {self.totalResultadoJugador2}")
-        if self.totalResultadosJugador1 > self.totalResultadoJugador2:
+        print(f"Puntos jugador 2: {self.totalResultadosJugador2}")
+        print(f"Puntos jugador 3: {self.totalResultadosJugador3}")
+        if self.totalResultadosJugador1 > self.totalResultadosJugador2 and \
+                self.totalResultadosJugador1 > self.totalResultadosJugador3:
             print(f"El GANADOR es {self.__nombreJugador1} con {self.totalResultadosJugador1} puntos")
-        elif self.totalResultadosJugador1 == self.totalResultadoJugador2:
+        elif self.totalResultadosJugador1 == self.totalResultadosJugador2 and \
+                self.totalResultadosJugador1 == self.totalResultadosJugador3:
             print("Ha habido un EMPATE")
+        elif self.totalResultadosJugador2 > self.totalResultadosJugador1 and \
+                self.totalResultadosJugador2 > self.totalResultadosJugador3:
+            print(f"El GANADOR es {self.__nombreJugador2} con {self.totalResultadosJugador2} puntos")
         else:
-            print(f"El GANADOR es {self.__nombreJugador2} con {self.totalResultadoJugador2} puntos")
+            print(f"El GANADOR es {self.__nombreJugador3} con {self.totalResultadosJugador3} puntos")

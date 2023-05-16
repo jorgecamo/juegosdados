@@ -1,7 +1,10 @@
 import dado
 
-
 class Juego:
+    """
+    #Esta es la class juego
+    Y sirve para ejecutar el juego
+    """
     __nombreJugador1 = ""
     __nombreJugador2 = ""
     __nombreJugador3 = ""
@@ -9,6 +12,18 @@ class Juego:
 
     def __init__(self, NombreJugador1, NombreJugador2, NombreJugador3, CarasDado1, CarasDado2, CarasDado3, CarasDado4,
                  NumLanzamientos, VerIntermedios):
+        """
+        Este es el constructor de la clase juego
+        :param NombreJugador1: String
+        :param NombreJugador2: String
+        :param NombreJugador3: String
+        :param CarasDado1: Int
+        :param CarasDado2: Int
+        :param CarasDado3: Int
+        :param CarasDado4: Int
+        :param NumLanzamientos: Int
+        :param VerIntermedios: Char
+        """
         self.set_jugador1(NombreJugador1)
         self.set_jugador2(NombreJugador2)
         self.set_jugador3(NombreJugador3)
@@ -30,12 +45,22 @@ class Juego:
         self.totalResultadosJugador3 = 0
 
     def set_jugador1(self, nombreJugador1):
+        """
+        Comprueba si el nombre tiene una longitud correcta
+        :param nombreJugador1: String
+        :return: String si esta bien o exeption si esta mal.
+        """
         if len(nombreJugador1) > 20:
             raise Exception("La longitud del nom del jugador 1 no pot ser major de 20")
         else:
             self.__nombreJugador1 = nombreJugador1
 
     def set_jugador2(self, nombreJugador2):
+        """
+        *Comprueba si el nombre tiene una longitud correcta*
+        :param nombreJugador2:String
+        :return: String si esta bien o exeption si esta mal.
+        """
         if len(nombreJugador2) > 20:
             raise Exception("La longitud del nom del jugador 2 no pot ser major de 20")
         else:
@@ -48,12 +73,21 @@ class Juego:
             self.__nombreJugador3 = nombreJugador3
 
     def set_lanzamientos(self, numLanzamientos):
+        """
+        Comprueba si esta bien el numwero de lanzamientos.
+        :param numLanzamientos:
+        :return:
+        """
         if not 2 < numLanzamientos <= 1000:
             raise Exception("El nombre de llançaments ha d'estar entre 2 i 1000")
         else:
             self.__lanzamientos = numLanzamientos
 
     def jugar(self):
+        """
+        Aqui se ejecuta el juego y te da la opcion de ver todos los lanzamientos de los jugadores.
+        :return:
+        """
         self.totalResultadosJugador1 = 0
         self.totalResultadosJugador2 = 0
         self.totalResultadosJugador3 = 0
@@ -96,6 +130,10 @@ class Juego:
                 print("")
 
     def mostrar(self):
+        """
+        Es un metodo que te muestra el resultado.
+        :return:
+        """
         print("Resultats:")
         print(f"Jugador 1: {self.__nombreJugador1}")
         print(f"Jugador 2: {self.__nombreJugador2}")
